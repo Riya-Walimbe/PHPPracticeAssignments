@@ -1,0 +1,20 @@
+<html>
+
+<script>
+
+function clock()
+{
+ var a=new Date();
+ var t=a.getHours()+":"+a.getMinutes()+":"+a.getSeconds();
+ document.ft.timetxt.value=t;
+ setInterval("clock()",1000);
+}
+
+</script>
+<body onload=clock()>
+<center><h3>Displaying CLOCK</h3>
+<form name="ft">
+<input type=text name=timetxt size="8">
+</form></center></body></html>
+
+</html>

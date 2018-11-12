@@ -1,0 +1,194 @@
+<html>
+
+<link rel="stylesheet" href="style1.css" type="text/css">
+<link rel=stylesheet href="css/bootstrap.css">
+<link rel=stylesheet href="css/bootstrap.min.css">
+
+
+<head>
+<title>Dance academy</title>
+</head>
+
+<script>
+function f()
+{
+
+var un=document.getElementById("un").value;
+var pwd=document.getElementById("pwd").value;
+
+if(un=="")
+{
+	alert("Please fill the username");
+}
+
+else if(pwd=="")
+{
+	alert("Please enter the password");
+}
+
+else
+{
+	alert("Login successfull!!");
+}
+
+}
+</script>
+
+<body>
+<div class=wrapper style="height:500px;"> 
+
+<div class=header>
+
+<div class=logo>
+
+<img src="logo.png">
+
+</div>
+
+<div class=navigation>
+<nav>
+<ul>
+<li><a href="#">Home</a>
+ <ul>
+        <li><a href="about.html">About Us</a></li>
+		<li><a href="#teachers">Teaching Staff</a></li>
+		 <li><a href="dance.html">Home page</a></li>
+		
+		<!--<li><a href="#">Infrastructure</a></li>-->
+         
+		 </ul>
+  </li> 
+   
+   <li><a href="register.html">Register</a>
+   
+   <li><a href="login.html">Login</a>
+   
+<!--<li><a href="#">Events</a>
+ <ul>
+        <li><a href="#">Kalidas Hall</a></li>
+		<li><a href="#">Mifta</a></li>
+		<li><a href="#">Garba</a></li>
+         <li><a href="#">Bharatanatyam</a></li>
+		 <li><a href="#">Hip-Hop</a></li>
+	     <li><a href="#">Jazz</a></li>
+   </ul>
+ </li>
+ 
+<li><a href="#">Classes</a>
+
+ <ul>
+        <li><a href="#">Mumbai</a>
+		<ul>
+		      <li><a href="#">Mira road</a></li>
+			  <li><a href="#">Andheri</a></li>
+		       <li><a href="#">Bandra</a></li>
+		       <li><a href="#">Dadar</a></li>
+			   <li><a href="#">Churchgate</a></li>
+			   <li><a href="#">Borivali</a></li>
+			   <li><a href="#">Ville Parle</a></li>
+			   <li><a href="#">Dombivali</a></li>
+		</ul>
+		</li>
+		
+		<li><a href="#">Delhi</a>
+		
+		 <ul>
+		 <li><a href="#">Karolbaug</a></li>
+		</ul>
+		 
+		 </li>
+		 
+		 <li><a href="#">Chennai</a>
+		
+		 <ul>
+		 <li><a href="#">Viswaraya Hall</a></li>
+		</ul>
+		
+		</li>
+		
+		 <li><a href="#">Kolkata</a>
+		<ul>
+		 <li><a href="#">Sadar Bazaar</a></li>
+		</ul>
+		</li>
+		
+		</ul>
+		</li>
+ -->
+
+
+
+<li><a href="dance.html#pics">Gallery</a></li>
+<li><a href="dance.html#contact">Contact-us</a></li>
+
+</nav>
+</div>
+
+</div>
+
+
+  <div  style="margin-left:800px; margin-top:150px; border:2px; height:400px; width:400px; box-shadow:8px 8px 8px 8px black; background-color:white">
+ <form>
+   <center><font style="margin-top:50px; font-size:40px; color:red; font-family:Arial"><br>LOGIN</font></center>
+  <div class="form-inline" align=center style="margin-top:50px">
+    <label><font style="font-size:20px;">UserName &nbsp &nbsp</font></label>
+    <input type="text" class="form-control" name=user style="width:200px" id=un>
+  </div>
+  <div class="form-inline" align=center style="margin-top:40px">
+    <label><font style="font-size:20px; ">Password &nbsp &nbsp</font></label>
+    <input type="password" class="form-control" name=passwd style="width:200px" id=pwd>
+  </div>
+    <center><button type="submit" class="btn btn-success" style="margin-top:40px; width:180px; font-size:20px" onclick="f()">Login</button></center>
+</form>
+</div>
+
+
+
+<div class=footer style="margin-top:300px;";>
+
+<div class=footer1>
+
+<h3 style="margin-top:80px; ">Class-Centers</h3>
+<ul style="display:inline; list-style:none">
+<li><h4>Mumbai</h4></li>
+<li><h4>Delhi</h4></li>
+<li><h4>Chennai</h4></li>
+<li><h4>Kolkata</h4></li>
+</ul>
+
+</div>
+
+
+<div class=footer2>
+<h3 style="margin-top:100px; ">Choreographers</h3>
+<ul>
+<li><h4>Remo</h4></li>
+<li><h4>Terrence</h4></li>
+<li><h4>K.K</h4></li>
+<li><h4>A.D</h4></li>
+</ul>
+</div>
+
+<div class=footer3>
+<h3 style="margin-top:120px; ">Related-links</h3>
+<ul>
+<li><a href="#"><h4>dance-academy-mumbai</h4></a></li>
+<li><a href="#"><h4>dance-academy-delhi</h4></a></li>
+<li><a href="#"><h4>dance-academy-chennai</h4></a></li>
+<li><a href="#"><h4>dance-academy-kolkata</h4></a></li>
+</ul>
+</div>
+
+<div class=footer4>
+<h3 style="margin-top:140px; ">Contact-us</h3>
+<ul>
+<li><h4>0253-226445</h4></li>
+<li><h4>a@gmail.com</h4></li>
+<li><h4>Fax no:225-33456</h4></li>
+<li><h4>www.danceac.com</h4></li>
+</ul>
+</div>
+
+</div>
+
+</html>

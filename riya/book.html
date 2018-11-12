@@ -1,0 +1,24 @@
+<html>
+
+<script>
+
+function f()
+{
+var a,b,c;
+a=document.getElementById("x").value;
+b=document.getElementById("y").value;
+c=document.getElementById("z").value;
+document.writeln("<h1>Book id is: "+a+"<br><h1>Book Name is: "+b+"<br><h1>Author Name is: "+c);
+}
+
+</script>
+
+<form>
+<h1>Book id</h1><input type=text id=x>
+<h1>Book Name</h1><input type=text id=y>
+<h1>Author Name</h1><input type=text id=z>
+</form>
+
+<input type=button value="Display info" onclick=f()>
+
+</html>

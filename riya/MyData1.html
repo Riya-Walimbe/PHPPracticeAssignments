@@ -1,0 +1,27 @@
+<html>
+<script>
+function fun()
+{
+var u=document.getElementById("un").value;
+var p=document.getElementById("pwd").value;
+var x=new XMLHttpRequest();
+x.onreadystatechange=function()
+{
+	if(this.readyState==4 && this.status==200)
+	{
+	document.getElementById("msg").innerHTML=this.responseText;
+	}
+};	
+
+		x.open("GET","MyData.php?un="+u+"&pwd="+p,true);
+		x.send();
+}
+</script>
+
+Username<input type=text id=un>
+Password<input type=text id=pwd>
+
+<button onclick=fun()>Login</button>
+<h2 id=msg></h2>
+
+</html>

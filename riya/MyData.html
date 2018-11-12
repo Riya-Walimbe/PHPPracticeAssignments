@@ -1,0 +1,30 @@
+<script>
+
+function f()
+{
+var u=docyment.getElementById("un").value;
+var p=document.getElementById("pwd").value;
+
+var x=new XMLHTTPRequest();
+
+x.onreadystatechange=function()
+{
+	if(this.readystate==4 && this.status==200)
+	{
+	
+	document.getElementById("msg").innerHTML=this.responseText;
+	
+
+	};
+
+		x.open("GET","MyData.php?uid="+u+&pwd="+p,true);
+		x.send();
+}
+
+</script>
+
+<input type=text id=un>
+<input type=text id=pwd>
+
+<h1 onclick=fun()>Login</h1>
+<h2 id=msg></h2>

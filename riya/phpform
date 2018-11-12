@@ -1,0 +1,20 @@
+<?php include_once("db.php");?>
+<html>
+
+
+<body>
+
+<form>
+Name <input type=text name="un">
+Phone number <input type=text name="ph">
+Address <input type=text name=add">
+Email-id <input type=text name="email">
+<input type=submit value="Register">
+</form>
+
+</body>
+
+
+
+
+</html>

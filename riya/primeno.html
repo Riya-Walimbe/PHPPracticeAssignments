@@ -1,0 +1,43 @@
+<html>
+
+<script>
+
+function f()
+{
+
+var c,i,pos1,pos2,j;
+ 
+        pos1=prompt("Enter start position");
+		pos2=prompt("Enter end position");
+	
+		
+		var ans,flag=0;
+		
+		document.writeln("Prime numbers are: <br>");
+		
+		for(j=pos1;j<=pos2;j++)
+		{
+		
+                   for(i=2;i<=j;i++)
+                  {
+				       if(j%i==0)
+					   {
+					          break;
+					   }
+					   
+					   else if(j==i+1)
+					   {
+					         document.writeln(j+"<br>");
+					   }
+				  
+				  }
+				   
+        }
+		
+}
+
+</script>
+
+<h1 onclick=f()>Check no</h1>
+
+</html>

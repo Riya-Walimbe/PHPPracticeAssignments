@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+
+<?xml-stylesheet type="text/xsl" href="cont.xsl"?>
+
+<c1>
+
+<contact>
+<branch>Ashwin Nagar</branch>
+<name>Terrence Louis</name>
+<mob>6758392076</mob>
+</contact>
+
+<contact>
+<branch>Bishnu Nagar</branch>
+<name>Remo</name>
+<mob>4958392076</mob>
+</contact>
+
+<contact>
+<branch>Sawata Nagar</branch>
+<name>K.K</name>
+<mob>6558392076</mob>
+</contact>
+
+<contact>
+<branch>Ram Nagar</branch>
+<name>R.K</name>
+<mob>5258392076</mob>
+</contact>
+
+<contact>
+<branch>Indira Nagar</branch>
+<name>S.V</name>
+<mob>5258992276</mob>
+</contact>
+
+</c1>

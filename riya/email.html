@@ -1,0 +1,32 @@
+<html>
+
+<script>
+
+function f()
+
+{
+
+var a,b,m,n;
+a=document.getElementById("e").value;
+b=document.getElementById("p").value;
+
+m=a.localeCompare("Riya");
+n=b.localeCompare("riya");
+
+if(m==0 && n==0 )
+alert("Login successfull!!!");
+else
+alert("Login failed!!!");
+
+
+}
+
+</script>
+
+<form>
+Email-id <input type=text id="e">
+Password <input type=password id="p">
+<input type=submit value="Login" onclick=f()>
+</form>
+
+</html>

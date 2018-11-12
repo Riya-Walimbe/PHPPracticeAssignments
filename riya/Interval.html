@@ -1,0 +1,26 @@
+<html>
+
+
+<script>
+
+function f()
+{
+   col=setInterval("f1()",6000);
+
+}
+
+function f1()
+{
+   if(document.getElementById("col").style.color=='red')
+   document.getElementById("col").style.color='blue';
+   else
+   document.getElementById("col").style.color='red';
+}
+
+</script>
+
+<body onload="f()">
+    <h1 id="col">Hi!!!!</h1>
+</body>	
+
+</html>

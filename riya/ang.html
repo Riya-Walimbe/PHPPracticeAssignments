@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Angular JS Example</title>
+</head>
+<script src="angular.min.js"></script>
+<!--link rel="stylesheet" href="/w3css/4/w3.css"-->
+<body>
+
+<script>
+var app = angular.module("myShoppingList", []); 
+app.controller("myCtrl", function($scope) {
+    $scope.products = ["Milk", "Bread", "Cheese"];
+    $scope.addItem = function () {
+        $scope.errortext = "";
+        if (!$scope.addMe) {return;}
+        if ($scope.products.indexOf($scope.addMe) == -1) {
+            $scope.products.push($scope.addMe);
+        } else {
+            $scope.errortext = "The item is already in your shopping list.";
+        }
+    }
+    $scope.removeItem = function (x) {
+        $scope.errortext = "";    
+        $scope.products.splice(x, 1);
+    }
+});
+</script>
+
+<div ng-app="myShoppingList" ng-cloak ng-controller="myCtrl" style="max-width:400px;">
+ 
+    <h1>My Shopping List</h1>
+    <table>
+     
+      <tr ng-repeat="x in products">
+        <td><h3>{{x}}</h3></td>
+        <td>&nbsp&nbsp</td>
+        <td><span ng-click="removeItem($index)" style="cursor:pointer;" ><img src="delete.png"></span></td>
+      </tr>
+    
+    </table>
+  
+  <div >
+    <div>
+      <div >
+        <input placeholder="Add shopping items here" ng-model="addMe">
+      
+        <button ng-click="addItem()">Add</button>
+      </div>
+    </div>
+    <!--p>{{errortext}}</p-->
+  </div>
+</div>
+
+</body>
+</html>

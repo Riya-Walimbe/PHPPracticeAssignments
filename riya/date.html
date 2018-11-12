@@ -1,0 +1,25 @@
+<html>
+
+
+<script>
+
+function f()
+{
+ setInterval("f1()",3000)
+}
+
+function f1()
+{
+
+document.getElementById("col").value=new Date();
+
+}
+
+</script>
+
+
+
+<input type=button id="col" onclick=f()>
+
+
+</html>

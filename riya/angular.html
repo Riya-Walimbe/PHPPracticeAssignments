@@ -1,0 +1,387 @@
+
+Assignment No.5(B)
+
+Problem Statement:- Design Web application using Angular JS
+
+Roll No:73		Div:B
+
+//DBCONFIG.php
+
+<?php
+
+global $con;
+
+$hostname = 'localhost';	// Host Name
+
+$user = 'root';	// username o`f host
+
+$password = '';	// password of host
+
+$dbname = 'alpeshvasani';	//database name
+
+$con = new mysqli($hostname,$user,$password,$dbname);
+
+if (mysqli_connect_errno())
+
+{echo "Failed to connect to MySQL: " . mysqli_connect_error();
+
+die();}
+
+//AddIt.php
+
+<?php
+
+require_once('dbconfig.php');
+
+$_POST = json_decode(file_get_contents('php://input'), true); if (empty($_POST['name']))
+
+echo 'name empty';
+
+$name = $_POST['name'];
+
+if (empty($_POST['email']))
+
+echo 'email empty';
+
+$email = $_POST['email'];
+
+if (empty($_POST['password']))
+
+echo 'password empty';
+
+$password = $_POST['password'];
+
+$query = "INSERT into info (name, email, password) VALUES ('$name', '$email', '$password')"; $result = mysqli_query($con,$query);
+
+$rows = mysqli_affected_rows($con);
+
+echo $json_response = json_encode($rows);
+
+?>
+
+
+//DeleteIt.php
+
+<?php
+
+require_once('dbconfig.php');
+
+$_POST = json_decode(file_get_contents('php://input'), true); if (empty($_POST['id']))
+
+echo 'id empty';
+$id = $_POST['id'];
+
+$query = "DELETE FROM info WHERE id='$id'";
+
+$result = mysqli_query($con,$query);
+
+$rows = mysqli_affected_rows($con);
+
+echo $json_response = json_encode($rows);
+
+?>
+
+//ReadIt.php
+
+<?php
+
+require_once('dbconfig.php');
+
+$data = array();
+
+$query = "SELECT * FROM info ORDER BY id DESC";
+
+$result = mysqli_query($con,$query);
+
+while($row = mysqli_fetch_assoc($result))
+
+{  $data[] = $row;
+
+}
+
+echo $json_response = json_encode($data);
+
+?>
+
+
+//UpdateIt.php
+
+<?php
+
+require_once('dbconfig.php');
+
+$_POST = json_decode(file_get_contents('php://input'), true); if (empty($_POST['id']))
+
+echo 'id empty';
+
+$id = $_POST['id'];
+
+if (empty($_POST['name']))
+
+echo 'name empty';
+
+$name = $_POST['name'];
+
+if (empty($_POST['email']))
+
+echo 'email empty';
+
+$email = $_POST['email'];
+
+if (empty($_POST['password']))
+
+echo 'password empty';
+
+$password = $_POST['password'];
+
+$query = "UPDATE info SET name='$name', password='$password', email='$email' WHERE id='$id'"; $result = mysqli_query($con,$query);
+$rows = mysqli_affected_rows($con);
+
+echo $json_response = json_encode($rows);
+
+?>
+
+
+//index.html
+
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8">
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<meta name="viewport" content="width=device-width, initial-scale=1"> <title>Angular PHP CRUD Oprations</title> <!-- Material Design Icons -->
+
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> <!-- Font Awesome -->
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"> <!-- Bootstrap core CSS -->
+
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"> <!-- Material Design Bootstrap -->
+
+<link href="css/mdb.min.css" rel="stylesheet">
+
+<script src="js/angular.min.js"></script>
+
+<script type="text/javascript" src="app/app.js"></script>
+
+</head>
+
+
+<body ng-app="crudapp">
+
+<div class="container" ng-controller="AppController">
+
+<h3 class="text-center">AngularJS PHP CRUD on MySQL</h3>
+
+<br>
+
+<form name="form1" novalidate style="margin-left: 10%;">
+
+<div class="input-field col-md-3">
+
+<input name="name" type="text" placeholder="Name" ng-model="name" required class="validate">
+
+<span ng-show="form1.$submitted && form1.name.$error.required" class="text-danger">Name required!</span> </div>
+
+<div class="input-field col-md-3">
+
+<input name="email" type="email" placeholder="Email" ng-model="email" required class="validate">
+<span ng-show="form1.$submitted && form1.email.$error.required" class="text-danger">Email required!</span> </div>
+
+<div class="input-field col-md-3">
+
+<input name="password" type="password" placeholder="Password" ng-model="password" required class="validate"> <span ng-show="form1.$submitted && form1.password.$error.required" class="text-danger">Password required!</span>
+
+</div>
+
+<button ng-click="form1.$valid && AddIt();" ng-if="addbtn" class="btn btn-primary waves-effect waves-light"><i class="fa fa-plus"></i> Add</button>
+
+<button ng-click="form1.$valid && form1.$dirty && UpdateIt();" ng-if="updatebtn" class="btn btn-success waves-effect waves-light"><i class="fa fa-check"></i> Update</button>
+
+</form>
+
+<br>
+
+<div class="row">
+
+<div class="col-md-offset-1 col-md-10">
+
+<br>
+
+<h5 class="text-center">Registered Users</h5>
+
+<table class="table table-hover table-bordered">
+
+<thead class="alert-warning">
+
+<tr>
+
+<th>Name</th>
+
+<th>Email</th>
+
+<th>Password</th>
+
+<th width="17%">Actions</th>
+
+</tr>
+
+</thead>
+
+<tbody ng-init="ReadIt();">
+
+<tr ng-repeat="item in items">
+
+<td>{{item.name}}</td>
+
+<td>{{item.email}}</td>
+
+<td>{{item.password}}</td>
+
+<td>
+
+<i ng-click="EditIt(item.id, item.name, item.email, item.password);" style="cursor:pointer;color:#119911;font-size:
+1.5rem;"	class="fa fa-pencil"></i> &nbsp;&nbsp;&nbsp;
+
+<i ng-click="DeleteIt(item.id);" style="cursor:pointer;color:#FF1111;font-size: 1.5rem;" class="fa fa-trash"></i> </td>
+
+</tr>
+
+</tbody>
+</table>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- SCRIPTS -->
+
+<!-- JQuery -->
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script> <!-- Bootstrap core JavaScript -->
+
+<script src="src=" https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js "></script>
+
+<!-- Material Design Bootstrap -->
+
+<script src="js/mdb.min.js "></script>
+
+</body>
+
+</html>
+
+ 
+//AngularAPP.js
+
+var app = angular.module("crudapp", []);
+
+app.controller('AppController', function($scope, $http) {
+
+ReadIt(); // load all information first
+
+$scope.updatebtn = false;
+
+$scope.addbtn = true;
+
+function ReadIt() {
+
+$http.get("api/ReadIt.php").success(function(data) {
+
+$scope.items = data;
+
+}).error(function(data, status, headers, config) {
+
+console.log(data);
+
+})
+
+}
+
+$scope.AddIt = function() {
+
+$http.post("api/AddIt.php", { name: $scope.name, email: $scope.email, password: $scope.password }). success(function(data, status, headers, config) {
+
+ReadIt(); //refresh all information
+
+}).error(function(data, status, headers, config) {
+
+console.log(data);
+
+});
+
+$scope.name = "";
+
+$scope.email = "";
+
+$scope.password = "";
+
+}
+
+$scope.DeleteIt = function(item) {
+
+$http.post("api/DeleteIt.php", { id: item }).
+
+success(function(data, status, headers, config) {
+
+ReadIt(); //refresh all information
+
+}).error(function(data, status, headers, config) {
+
+console.log(data);
+
+});
+
+}
+
+$scope.EditIt = function(id, name, email, password) {
+
+
+$scope.updatebtn = true;
+
+$scope.addbtn = false;
+
+$scope.id = id;
+
+$scope.name = name;
+
+$scope.email = email;
+
+$scope.password = password;
+
+}
+
+$scope.UpdateIt = function() {
+
+$http.post("api/UpdateIt.php", { id: $scope.id, name: $scope.name, email: $scope.email, password: $scope.password }). success(function(data, status, headers, config) {
+
+ReadIt(); //refresh all information
+
+}).error(function(data, status, headers, config) {
+
+console.log(data);
+
+});
+
+$scope.name = "";
+
+$scope.email = "";
+
+$scope.password = "";
+
+$scope.updatebtn = false;
+
+$scope.addbtn = true;
+
+}
+
+});
+ 
+

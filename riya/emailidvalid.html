@@ -1,0 +1,44 @@
+<html>
+	<head>
+		<title>Emailid Validation</title>
+	</head>
+	
+	<script>
+	
+	function validem()
+	{
+		var eml;
+		eml = document.getElementById("em").value;
+		
+		if(eml=="")
+		{
+			document.getElementById("err").innerHTML="Please Fill Emailid";
+			document.getElementById("em").focus(true);
+			return false;
+		}
+		else
+		{
+			var atpos,dotpos;
+			atpos = eml.indexOf("@");
+			dotpos = eml.indexOf(".",atpos+1);
+			
+			if(atpos>=1 && dotpos>=1)
+			return true;
+			else
+			{
+				document.getElementById("err").innerHTML="Please enter valid emailid";
+				return false;
+			}
+			document.getElementById("em").value="";
+			return true;
+		}
+		
+	}
+		
+	</script>
+	
+	<form method="get" action="arr5.html" onsubmit="return validem()">
+	Enter email-id:-<input type="text" name="email" id="em">
+	<span id="err" style="font-size:20px;color:red"></span>
+	<input type="submit">
+</html>
